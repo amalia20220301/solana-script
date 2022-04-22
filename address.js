@@ -2,12 +2,12 @@ let BIP32Factory = require('bip32').default
 const bs58 = require('bs58')
 const bip39 = require('bip39')
 const solanaWeb3 = require('@solana/web3.js');
-const {Keypair} = require("@solana/web3.js");
+const { Keypair } = require("@solana/web3.js");
 var bip32Edd25519 = require('bip32-ed25519')
 var eddsa = bip32Edd25519.eddsa;
 require('dotenv').config()
 
-const path = "m/44'/501'/0'/0'/0'";
+const path = "m/44'/501'/0'/0'";
 const seed = bip39.mnemonicToSeedSync(process.env.WORDS)
 const nacl = require('tweetnacl')
 
@@ -38,7 +38,7 @@ const nacl = require('tweetnacl')
 
 
 const { derivePath, getMasterKeyFromSeed, getPublicKey } = require('ed25519-hd-key')
-const { key} = derivePath(path, seed.toString('hex'));
+const { key } = derivePath(path, seed.toString('hex'));
 console.log('address', bs58.encode(nacl.sign.keyPair.fromSeed(key).publicKey))
 // console.log('address', bs58.encode(getPublicKey(key)))
 // console.log('expected', bs58.decode("53Kpey3CQzBvKny3zUvcUEQCHoRMjFgTyvEedb6pwp5G").toString())
